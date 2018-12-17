@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tech Sam</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/config.js"></script>
+    <script src="/assets/js/app.js"></script>
+</head>
+<body>
+<div id="header"></div>
+
+<div class="container-fluid bg-white" id="article">
+    <div class="container article-img-title p-0">
+        <picture>
+            <source media="(max-width: 650px)" srcset="../web-hosting/Free-web-hosting-with-Github-sm.png">
+            <img src="../web-hosting/Free-web-hosting-with-Github.png">
+        </picture>
+    </div>
+    <div class="container">
+        <div class="row" id="article-body">
+            <div class="border border-muted pt-3 col col-md-10 bg-white" id="articleMain">
+                <h3 id="context">Introduction</h3>
+                <p>
+                    If you have a technical web blog it is common to write a sample snippet of code while explaining a
+                    concept. Most difficult part while inserting code is highlighting a key words and pretty printing
+                    (formatting)
+                    the code in web page. There are a lot of Javascript plug-ins to format the code. But all these
+                    plug-ins will do
+                    what it suppose to do. But the major problem with this approach is we need to include the code in
+                    HTML pages. When you want to change or update the code you have to update the web page in hosted web
+                    server.
+                </p>
+                <p>
+                    Github introduced a tool called Gist to keep the snippet of code. This is very simple to include the
+                    code in web pages with syntax highlighter and pretty print. Use below steps to include Gist code
+                    snippet in your web pages.
+                </p>
+                <h3 id="enableGist">Navigate to Gist</h3>
+                <p>
+                    If you're navigating to Gist for the first time follow below steps. Otherwise skip to next section.
+                <ol>
+                    <li>Open <a href="https://github.com/" target="_blank">Github</a> and login with your account</li>
+                    <li>Click on <b>+</b> sign at right corner of the site and select <b>New gist</b>. This option will
+                        take you to new <a target="_blank" href="https://gist.github.com/">gist</a> page
+                        <img src="gist-navigation.png" class="half-size">
+                    </li>
+                </ol>
+
+                </p>
+                <p>
+                    Alternatively, you can open the <a target="_blank" href="https://gist.github.com/">gist</a> page
+                    directly and can sign in.
+                </p>
+                <h3 id="insertSnippet">Add snippet</h3>
+                <p>
+                    Use below steps create source file and include in web page.
+                <ol>
+                    <li>Click on <b>New gist</b> option</li>
+                    <li>Enter file name with extension. Extension is very important. <a target="_blank"
+                                                                                        href="https://gist.github.com/">Gist</a>
+                        tool will highlight the syntax and format the code based on extension
+                    </li>
+                    <li>Add your code in code text box</li>
+                    <li>Once you are done with the code you can click on <b>Create secret gist</b> or <b>Create public
+                        gist</b> button based on your preference
+                    </li>
+                    <li>You can add as many files you want by clicking one <b>Add file button</b></li>
+                    <li>Once you click on create gist button, it will create the gist. Copy the embed link.
+                        <img src="add-gist-snippet.png">
+                    </li>
+                    <li>Include the copied embed link in your HTML page wherever you want to display the code. For
+                        example,
+                        <div class="syntax">
+                            &lt;script src="<a
+                                href="https://gist.github.com/samreddy-patti/31659e4a51c4e069818e670df79598cc"
+                                target="_blank">https://gist.github.com/samreddy-patti/31659e4a51c4e069818e670df79598cc.js</a>"&gt;&lt;/script&gt;
+                        </div>
+                    </li>
+
+                </ol>
+                </p>
+                <h3>Add single file</h3>
+                <p>
+                    It is pretty common to have more than one file for an article. Creating gist for every single file
+                    and maintaining these files are very difficult. we can add multiple file in single gist. By default
+                    if you add the gist embed URL, you will see all the files. If you want to add a specific file in web
+                    page from gist you can pass the file name as parameter.
+                </p>
+                <p>
+                    For example, if you have two files <i>File1.js</i> and <i>File2.js</i> in single gist. If you
+                    want to add only <i>File1.js</i>,
+                <div class="syntax">
+                    &lt;script src="gist embed url?file=File1.js"&gt;&lt;/script&gt;
+                </div>
+                <b>file</b> query parameter allow you to pass the file name.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

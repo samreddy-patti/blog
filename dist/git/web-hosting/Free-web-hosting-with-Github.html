@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tech Sam</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/config.js"></script>
+    <script src="/assets/js/app.js"></script>
+</head>
+<body>
+<div id="header"></div>
+
+<div class="container-fluid bg-white" id="article">
+    <div class="container article-img-title p-0">
+        <picture>
+            <source media="(max-width: 650px)" srcset="Free-web-hosting-with-Github-sm.png">
+            <img src="Free-web-hosting-with-Github.png">
+        </picture>
+    </div>
+    <div class="container">
+        <div class="row" id="article-body">
+            <div class="border border-muted pt-3 col col-md-10 bg-white" id="articleMain">
+                <h3 id="introduction" class="text-primary">Introduction</h3>
+                <p>This article intended to explain how to use <a target="_blank"
+                                                                  href="https://pages.github.com/">Github page</a> as a
+                    static
+                    web hosting server. Usually, if you want to have a website, you need to buy a domain and then buy
+                    storage space to keep the static files. There are lots of internet domain providers in the market. I
+                    did my domain registration through <a target="_blank" href="http://www.godaddy.com">Godaddy</a>.
+                    You can choose the domain providers as you like.
+                </p>
+                <p>
+                    Once you register the domain you need web pages to reach your contents. These contents could be a
+                    plain text, images, music files, videos and etc. Like domain name providers, there are lot of
+                    hosting providers in the market. The majority of the domain providers will provide
+                    hosting as well, but you need to pay money for that.</p>
+                <p>
+                    If you are planning to have a standard or static contents of your web pages and don’t need any
+                    special software (called static web hosting) there are lot providers who gives web hosting for
+                    cheaper price. For example, <a target="_blank"
+                                                   href="https://aws.amazon.com/getting-started/projects/host-static-website/">Amazon
+                    S3</a>static web hosting. Now, we don't need to spend money for this. Yes, we can have a web hosting
+                    in Github without paying a single penny. This is very useful for the people who want to have a web
+                    site with static web pages like having company profile, business brochure, blog or personal profile.
+                    Use below steps to create a page in Github and map to your domain.</p>
+
+                <h3 id="createPage" class="text-primary">Create Github page</h3>
+                <p>The first step to host the web page in github is creating a page. Follow steps mentioned in github <a
+                        target="_blank" href="https://pages.github.com/">page</a> to create a page. Don’t forget to
+                    create your repo with <i>.github.io</i> suffix. For example, if you want to create a repository
+                    something, like<i>techsams</i> then use name as <i>techsams.github.io</i>. if you don’t give this
+                    suffix, it will still work, but the default page will be rendered from <i>README.md</i> file. If you
+                    give a suffix, it will pick <i>index.html</i> as a default page.</p>
+
+                <h3 id="configuration" class="text-primary">Github configuration</h3>
+                <p>There is a good documentation available in github with the instructions to use a custom URL with <a
+                        target="_blank"
+                        href="https://help.github.com/articles/using-a-custom-domain-with-github-pages/">Github
+                    pages</a>, but you need to go through multiple links to achieve this. Use below steps to add your
+                    domain into github.
+                <ol>
+                    <li>Login into <a target="_blank" href="https://github.com/">Github</a>. Select your page
+                        repository from <i>Your repositories</i> list and click on <i>Settings</i>
+                        <img src="git-repo-settings.png">
+                    </li>
+                    <li>Scroll down until you see <i>Github pages</i>. If you already not yet enabled the page,
+                        select
+                        the branch to keep your web pages and click on the <i>Save</i> button.
+                    </li>
+                    <li>Once you have enabled the page option, give the domain name and click on the <i>Save</i>
+                        button. You will see a success message with your website name. The moment you save domain,
+                        <a target="_blank" href="https://github.com/">Github</a>will add a file called a
+                        <i>CNAME</i> in your repository.
+                        <img src="github-pages.png">
+
+                    </li>
+                </ol>
+                </p>
+
+                <p>Once you are done with <a target="_blank" href="https://github.com/">Github</a> configuration go to
+                    DNS
+                    configuration.
+                </p>
+
+                <h3 id="dnsConfiguration" class="text-primary">DNS configuration</h3>
+                <p>
+                    To configure your domain with Github, you should know how to add DNS records with the DNS provider.
+                    If
+                    you don’t know how to do it, contact your domain provider. Most of the domain providers will have a
+                    web
+                    page to manage your DNS records online. Here, I am using <a target="_blank"
+                                                                                href="http://www.godaddy.com">godaddy</a>
+                    DNS page to give the explanation. There are two different types of domains i.e., sub domain and apex
+                    domain. Sub domain usually comes with <i>www</i>. For example <a target="_blank"
+                                                                                     href="http://www.techjira.com">www.techjira.com</a>
+                    is a sub domain. Apex domain doesn’t have <i>www</i>. For example<a target="_blank"
+                                                                                        href="http://techjira.com">http://techjira.com</a>
+                    is an apex domain. DNS configuration is different for sub domains and apex.
+                </p>
+                <ol>
+                    <li>First login into DNS provider website and go to DNS setting</li>
+                    <li>Remove all the entries if you have any. Make sure you don’t have <i>A</i> records or
+                        <i>CNAME</i>
+                        records
+                    </li>
+                    <li>If you are using sub domain(WWW) add an entry of <i>CNAME</i> with value as <i>YOUR-GITHUB-USERNAME.github.io</i>.
+                        for example, if
+                        you have a github user as "sivreddyp" and then the entry should be sivreddyp.gitgub.io
+                    </li>
+                    <li>If you have apex domain, then add an entry of <i>A</i> with the IP address of
+                        <i>192.30.252.153</i>
+                        or <i>192.30.252.154</i>
+                    </li>
+                    <li>If you have both sub domain and apex, then you need both entries. Sample records look like below
+                        with godady provider
+                        <img src="godady-dns-setting.png">
+                    </li>
+                </ol>
+                <p>That's all. You are done with your hosting. Once your configuration is done, access your website from
+                    a
+                    browser. Please note that some DNS providers will take up to 1 day to refresh your records. If you
+                    want
+                    to verify the configuration is done correctly or not not use below steps to verify.</p>
+
+                <h3 id="verifyConfiguration" class="text-primary">Verify configuration</h3>
+                <p>
+                    You can verify the configuration in multiple ways. One easiest way is checking online. Go to online
+                    <a target="_blank" href="https://toolbox.googleapps.com/apps/dig/">dig</a> tool and click on
+                    <i>A</i> OR
+                    <i>CNAME</i> to verify your records. It should be something like below.
+                </p>
+                <img src="dig-cname.png">
+                <h3 id="customError" class="text-primary">Custom error page</h3>
+                <p> If you would like to create your own custom error page for HTTP error 404, create 404.html file in root
+                    folder of your page repository</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
