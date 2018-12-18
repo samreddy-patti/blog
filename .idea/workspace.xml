@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52e92886-7bce-4dde-b266-b9bd45afc4b8" name="Default Changelist" comment="" />
+    <list default="true" id="52e92886-7bce-4dde-b266-b9bd45afc4b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/js/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/assets/js/app.js.map" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -15,15 +19,16 @@
     <session id="574990485">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.3" value="2" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -31,7 +36,7 @@
           <entry key="PNG" value="1" />
           <entry key="bootstrap" value="1" />
           <entry key="css" value="32" />
-          <entry key="html" value="90" />
+          <entry key="html" value="92" />
           <entry key="ico" value="1" />
           <entry key="jpeg" value="1" />
           <entry key="js" value="75" />
@@ -43,7 +48,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="32" />
-          <entry key="HTML" value="90" />
+          <entry key="HTML" value="92" />
           <entry key="Image" value="7" />
           <entry key="JSON" value="5" />
           <entry key="JavaScript" value="76" />
@@ -73,17 +78,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/git/gist/Blog-code-syntax-highlighter-with-Gist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="103" column="7" lean-forward="true" selection-start-line="103" selection-start-column="7" selection-end-line="103" selection-end-column="7" />
-              <folding>
-                <element signature="e#5362#5366#0" expanded="true" />
-                <element signature="e#5378#5382#0" expanded="true" />
-                <element signature="e#5382#5386#0" expanded="true" />
-                <element signature="e#5387#5391#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="250">
+              <caret line="103" column="7" selection-start-line="103" selection-start-column="7" selection-end-line="103" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dist/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -136,6 +144,9 @@
       <replace>Listener</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -187,6 +198,7 @@
     <option name="width" value="1382" />
     <option name="height" value="784" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <autoscrollFromSource Scope="true" ProjectPane="true" />
@@ -199,6 +211,28 @@
             <path>
               <item name="blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="dist" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="dist" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -279,11 +313,12 @@
       <workItem from="1543438762107" duration="29860000" />
       <workItem from="1543935692257" duration="50083000" />
       <workItem from="1545047360417" duration="7394000" />
+      <workItem from="1545091345858" duration="896000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166835000" />
+    <option name="totallyTimeSpent" value="167731000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -408,13 +443,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/html/asset-links.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -460,13 +488,6 @@
     <entry file="file://$PROJECT_DIR$/dist/git/gist/gist-navigation.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="29" column="61" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/assets/css/jqcloud.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -488,13 +509,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/java/Java-8-lambda-expression.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="150" column="41" selection-start-line="150" selection-start-column="38" selection-end-line="150" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/java/Java-8-lambda-expression.html" />
     <entry file="file://$PROJECT_DIR$/dist/java/lambda/Java-8-lambda-expression.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
@@ -527,14 +542,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/git/gist/Blog-code-syntax-highlighter-with-Gist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="103" column="7" lean-forward="true" selection-start-line="103" selection-start-column="7" selection-end-line="103" selection-end-column="7" />
-          <folding>
-            <element signature="e#5362#5366#0" expanded="true" />
-            <element signature="e#5378#5382#0" expanded="true" />
-            <element signature="e#5382#5386#0" expanded="true" />
-            <element signature="e#5387#5391#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="250">
+          <caret line="103" column="7" selection-start-line="103" selection-start-column="7" selection-end-line="103" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
         </state>
       </provider>
     </entry>

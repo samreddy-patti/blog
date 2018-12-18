@@ -18,9 +18,7 @@ $(document).ready(() => {
         wordCloud.push({text: name, weight: count, link: `/blog.html?tag=${name}`});
     });
 
-    if (location.pathname === "/") {
-        htmlRender.displayProfile();
-    } else {
+    if (location.pathname !== "/") {
         htmlRender.displayHeader();
         htmlRender.displayMainPage(articles);
         htmlRender.addArticleIndexSection();

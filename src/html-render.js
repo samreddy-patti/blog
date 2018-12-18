@@ -1,17 +1,12 @@
 import $ from "jquery";
 import headerHTML from "./html/header.html";
 import assetLinks from "./html/asset-links.html";
-import profileHTML from "./html/profile.html";
 import footerHTML from "./html/footer.html";
 
 export class HTMLRender {
     constructor() {
         $("head").append(assetLinks);
         $("body").after(footerHTML);
-    }
-
-    displayProfile() {
-        $("body").append(profileHTML);
     }
 
     displayHeader() {
