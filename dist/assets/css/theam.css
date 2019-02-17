@@ -157,6 +157,10 @@ h3 {
     margin-right: 4%;
 }
 
+#article-body{
+    text-align: justify;
+}
+
 #article-body img {
     width: 100%;
     max-height: 400px;

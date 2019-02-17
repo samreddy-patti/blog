@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tech Sam</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/config.js"></script>
+    <script src="/assets/js/app.js"></script>
+</head>
+<body>
+<div id="header"></div>
+
+<div class="container-fluid bg-white" id="article">
+    <div class="container article-img-title p-0">
+        <picture>
+            <source media="(max-width: 650px)" srcset="Load-component-dynamically-in-angular-sm.png">
+            <img src="Load-component-dynamically-in-angular.png">
+        </picture>
+    </div>
+    <div class="container">
+        <div class="row" id="article-body">
+            <div class="border border-muted pt-3 col col-md-10 bg-white" id="articleMain">
+                <h3>Overview</h3>
+                <p>
+                    As part of front-end development we create UI templates. Obviously we know the order of the
+                    components and types of these components. In some cases though we know the type of the component
+                    which is going to load we may not know what component will load. I mean, if you have multiple
+                    components of same type and want to load one of those components(component factory). There are many
+                    cases where we need to load components dynamically. Most common situations are loading component in
+                    overlay or if you have set of tabs. In this article I am going to use a tab set.
+                </p>
+                <p>
+                    Let's assume you have two tabs called <b>One</b> and <b>Two</b>. <b>One</b> tab body is with
+                    <b>TabOneComponent</b> and <b>Two</b> tab body is with <b>TabTwoComponent</b>. When user clicks on
+                    tabs we want to
+                    load appropriate tab body.
+                </p>
+                <p>
+                    Angular provides different ways to archive to load component dynamically. Most common and easy ways
+                    are,
+                <ul>
+                    <li>
+                        Conditionally loading with <a
+                            href="https://angular.io/api/common/NgIf" target="_blank">NgIf</a> or
+                        <a href="https://angular.io/api/common/NgSwitch">NgSwitch</a> directives
+                    </li>
+                    <li>
+                        Using Angular API with <a href="https://angular.io/api/core/ComponentFactoryResolver"
+                                                  target="_blank">ComponentFactoryResolver</a> and <a
+                            href="https://angular.io/api/core/ViewContainerRef" target="_blank">ViewContainerRef</a>.
+                    </li>
+                </ul>
+                Let's see how to use both of these approaches.
+                </p>
+                <h3>Through condition</h3>
+                <h5><a href="https://angular.io/api/common/NgIf" target="_blank">NgIf</a> directive</h5>
+                <div>
+                    <script src="https://gist.github.com/samreddy-patti/606074952f7ae0f0a2a2c5064796fbd8.js?file=ComponentIf.html"></script>
+                </div>
+                </p>
+                <h5><a href="https://angular.io/api/common/NgSwitch">NgSwitch</a> directive</h5>
+                <p>
+                    <script src="https://gist.github.com/samreddy-patti/606074952f7ae0f0a2a2c5064796fbd8.js?file=ComponentSwitch.html"></script>
+                </p>
+                <p>Below demo explains the using <a href="https://angular.io/api/common/NgSwitch">NgSwitch</a> directive
+                    approach. Open the console to see the constructor messages. Click
+                    on increase button to increase the counter values. After increasing the counter click on Tab 2 and
+                    come back to Tab 1. You can notice the counter got reset because the Tab one component is re-created
+                    again. Conditionally loading components serves the purpose but it is not scalable.
+                    <iframe src="https://embed.plnkr.co/plunk/UC3MKrDzwJqbwt7e?show=app,preview&deferRun"
+                            frameborder="0"
+                            width="100%"
+                            height="480px"
+                    ></iframe>
+                </p>
+                <h3>Through API</h3>
+                <p>
+                    Angular has a nice APIs to support dynamic component creation. Actually Angular even
+                    support dynamic module on fly. In this article we are focusing more on component. To create a
+                    component dynamically use below steps.
+                <ul>
+                    <li>Create a component which you want to load dynamically. You can use Angular-cli <b>ng g c</b>
+                        command for the same.
+                    </li>
+                    <li>
+                        Add newly created component in <b>declarations</b> attribute of <a target="_blank"
+                                                                                           href="https://angular.io/guide/ngmodules">NgModule</a>.
+                        If you are using Angular-cli it would have done already.
+                    </li>
+                    <li>
+                        Add the component in <b>entryComponents</b> attribute. This step is mandatory to load the
+                        component
+                        dynamically.
+                    </li>
+                    <li>
+                        Where ever you want to add the component dynamically, place <b>&lt;ng-container&gt; element in
+                        html template.</b>
+                    </li>
+                    <li>
+                        Use <a href="https://angular.io/api/core/ComponentFactoryResolver" target="_blank">ComponentFactoryResolver</a>
+                        and <a href="https://angular.io/api/core/ViewContainerRef" target="_blank">ViewContainerRef</a>
+                        API to create the component. For
+                        example,
+                        <pre class="code">
+export class AppComponent implements OnInit {
+  @ViewChild('tabBody', { read: ViewContainerRef })
+  componentContainer: ViewContainerRef;
+  constructor(private resolver: ComponentFactoryResolver) {
+
+  }
+  public ngOnInit(): void {
+    this.loadTab();
+  }
+  loadTab() {
+    this.componentContainer.clear();
+    const component = this.resolver.resolveComponentFactory&lt;TabBaseComponet&gt;(TabOneComponent);
+    const componentRef = this.componentContainer.createComponent(component);
+    // This is very importent to call the life cycle hoots of component
+    componentRef.changeDetectorRef.detectChanges();
+    /*
+       If you want to call methods of tab component use instance attribute. For example,
+       componentRef.instance.increaseCounter();
+    */
+  }
+  ...
+}
+                        </pre>
+                    </li>
+                </ul>
+                Look at below demo to create the component dynamically.
+
+                </p>
+                <h3>Demo</h3>
+                <iframe src="https://stackblitz.com/edit/angular-dynamic-loading?embed=1&file=src/app/app.component.ts&hideNavigation=1"
+                        frameborder="0" width="100%" height="480px"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

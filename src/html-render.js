@@ -28,7 +28,7 @@ export class HTMLRender {
             filter = (param.split("=") || [undefined, undefined])[1];
         }
         const articleHTML = articles
-            .sort((a1, a2) => a2.id - a1.id)
+            .sort((a1, a2) => new Date(a2.date) - new Date(a1.date))
             .reduce((articleHTML, article) => {
                 if (!filter || (filter && article.tags.indexOf(filter) != -1)) {
                     return articleHTML + this.getArticleBlock(article);

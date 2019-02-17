@@ -2,6 +2,14 @@ const nativeWindow = window;
 nativeWindow.config = {
     articles: [
         {
+            id: 8,
+            title: 'Load component dynamically in angular',
+            date: 'Nov 18, 2017',
+            description: '',
+            pathPrefix: '/js/angular/dynamic-component/',
+            tags: ['JS', 'Angular']
+        },
+        {
             id: 7,
             title: 'Blog code syntax highlighter with Gist',
             date: 'Aug 1, 2018',
