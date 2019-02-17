@@ -100,32 +100,8 @@
                     <li>
                         Use <a href="https://angular.io/api/core/ComponentFactoryResolver" target="_blank">ComponentFactoryResolver</a>
                         and <a href="https://angular.io/api/core/ViewContainerRef" target="_blank">ViewContainerRef</a>
-                        API to create the component. For
-                        example,
-                        <pre class="code">
-export class AppComponent implements OnInit {
-  @ViewChild('tabBody', { read: ViewContainerRef })
-  componentContainer: ViewContainerRef;
-  constructor(private resolver: ComponentFactoryResolver) {
-
-  }
-  public ngOnInit(): void {
-    this.loadTab();
-  }
-  loadTab() {
-    this.componentContainer.clear();
-    const component = this.resolver.resolveComponentFactory&lt;TabBaseComponet&gt;(TabOneComponent);
-    const componentRef = this.componentContainer.createComponent(component);
-    // This is very importent to call the life cycle hoots of component
-    componentRef.changeDetectorRef.detectChanges();
-    /*
-       If you want to call methods of tab component use instance attribute. For example,
-       componentRef.instance.increaseCounter();
-    */
-  }
-  ...
-}
-                        </pre>
+                        API to create the component. For example,
+                        <script src="https://gist.github.com/samreddy-patti/606074952f7ae0f0a2a2c5064796fbd8.js?file=angular-dynamic-component.js"></script>
                     </li>
                 </ul>
                 Look at below demo to create the component dynamically.
@@ -133,6 +109,7 @@ export class AppComponent implements OnInit {
                 </p>
                 <h3 id="demo">Demo</h3>
                 <iframe src="https://stackblitz.com/edit/angular-dynamic-loading?embed=1&file=src/app/app.component.ts&hideNavigation=1"
+                <iframe src="https://stackblitz.com/github/samreddy-patti/angular-dynamic-loading?embed=1&file=src/app/app.component.ts&hideNavigation=1"
                         frameborder="0" width="100%" height="480px"></iframe>
             </div>
         </div>
