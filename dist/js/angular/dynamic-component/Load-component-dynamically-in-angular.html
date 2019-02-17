@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row" id="article-body">
             <div class="border border-muted pt-3 col col-md-10 bg-white" id="articleMain">
-                <h3>Overview</h3>
+                <h3 id="overview">Overview</h3>
                 <p>
                     As part of front-end development we create UI templates. Obviously we know the order of the
                     components and types of these components. In some cases though we know the type of the component
@@ -53,7 +53,7 @@
                 </ul>
                 Let's see how to use both of these approaches.
                 </p>
-                <h3>Through condition</h3>
+                <h3 id="condition">Through condition</h3>
                 <h5><a href="https://angular.io/api/common/NgIf" target="_blank">NgIf</a> directive</h5>
                 <div>
                     <script src="https://gist.github.com/samreddy-patti/606074952f7ae0f0a2a2c5064796fbd8.js?file=ComponentIf.html"></script>
@@ -74,7 +74,7 @@
                             height="480px"
                     ></iframe>
                 </p>
-                <h3>Through API</h3>
+                <h3 id="api">Through API</h3>
                 <p>
                     Angular has a nice APIs to support dynamic component creation. Actually Angular even
                     support dynamic module on fly. In this article we are focusing more on component. To create a
@@ -131,7 +131,7 @@ export class AppComponent implements OnInit {
                 Look at below demo to create the component dynamically.
 
                 </p>
-                <h3>Demo</h3>
+                <h3 id="demo">Demo</h3>
                 <iframe src="https://stackblitz.com/edit/angular-dynamic-loading?embed=1&file=src/app/app.component.ts&hideNavigation=1"
                         frameborder="0" width="100%" height="480px"></iframe>
             </div>
