@@ -29,10 +29,6 @@ nativeWindow.config = {
             id: 5,
             title: 'Java 8 lambda expression',
             date: 'Jun 16, 2015',
-            description: {
-                image: '',
-                details: 'Java is, primarily, an object-oriented programming language. In both object-oriented and functional languages, basic values can dynamically encapsulate program behavior. Object oriented languages have objects with methods and functional languages have functions. Java enabled functional programming from J2SE 8.'
-            },
             pathPrefix: '/java/lambda/',
             tags: ['Java', 'Lambda']
         },
@@ -58,27 +54,14 @@ nativeWindow.config = {
              path: '',
              tags: ['Apache', 'Load balancer', 'mod_proxy']
          },
-         {
-             id: 2,
-             title: 'Load balancer - introduction',
-             date: 'May 8, 2015',
-             description: {
-                 image: '',
-                 details: `World Wide Web (WWW) is a very hot channel for any business. The present trend is getting business on web presence. Getting a business on web presence is very simple - create an awesome customer face web application and deploy it on server. Just image by spending some time and effort you build an awesome website which is very user friendly, simple to use and everyone likes it.`
-             },
-             path: '',
-             tags: ['Load balancer']
-         },
+         */
          {
              id: 1,
-             title: 'Grunt - JavaScript Task Runner',
-             date: 'April 21, 2015',
-             description: {
-                 image: '',
-                 details: `Almost all modern web applications are using a data-driven approach with single page navigation or responsive design. JavaScript plays a key role in this approach. The complete web site (static/dynamic) is rendered through JS. Hence we need well defined process to validate the JS files and unit tested. Grunt is task based command line tool for JavaScript. The task can be anything. Usually, front end application development will have below tasks`
-             },
-             path: '',
-             tags: ['Javascript', 'Grunt']
-         }*/
+             title: 'Load balancer',
+             date: 'May 8, 2015',
+             pathPrefix: '/load-balancer/',
+             tags: ['Load balancer']
+         },
+
     ]
 };

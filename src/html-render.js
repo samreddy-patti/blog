@@ -16,7 +16,7 @@ export class HTMLRender {
     addArticleIndexSection() {
         const articleMain = $('#articleMain');
         if (articleMain.length) {
-            this.addSocialButtons();
+            // this.addSocialButtons();
             this.addArticleIndex();
         }
     }
@@ -41,7 +41,7 @@ export class HTMLRender {
 
 
     getArticleBlock(article) {
-        const pageLinkResource = `${article.pathPrefix}${article.title.replace(/ /g, '-')}`;
+        const pageLinkResource = `${article.pathPrefix}${article.title.replace(/ /g, '-').toLowerCase()}`;
         const tagsLink = article.tags.reduce((tagsLink, tag) => {
             tagsLink += `<a href="/blog.html?tag=${tag}"> <span class="badge badge-primary">#${tag} </span></a> `;
             return tagsLink;
@@ -49,7 +49,12 @@ export class HTMLRender {
 
         return `<div class="col-4 article">
                      <div class="card">
-                         <a href="${pageLinkResource}.html"><img class="card-img-top card-img" src="${pageLinkResource}-sm.png" alt="Card image"></a>
+                        <a href="${pageLinkResource}.html">
+                            <img class="card-img-top card-img" src="${pageLinkResource}-sm.png" alt="Card image">
+                            <div class="img-overlay">
+                               
+                            </div>
+                        </a>
                          <div class="card-header bg-white text-muted border-0">
                           <div class="pull-left"><small>${article.date}</small></div>
                           <div class="pull-right"><small></small></div>

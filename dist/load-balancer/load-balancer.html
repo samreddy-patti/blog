@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tech Sam</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/config.js"></script>
+    <script src="/assets/js/app.js"></script>
+</head>
+<body>
+<div id="header"></div>
+
+<div class="container-fluid bg-white" id="article">
+    <div class="container article-img-title p-0">
+        <picture>
+            <source media="(max-width: 650px)" srcset="load-balancer-sm.png">
+            <img src="load-balancer.png">
+        </picture>
+    </div>
+    <div class="container">
+        <div class="row" id="article-body">
+            <div class="border border-muted pt-3 col col-md-10 bg-white" id="articleMain">
+                <h3 id="overview">Overview</h3>
+                <p>
+                    World Wide Web (WWW) is a very hot channel for any business. The present trend is getting business
+                    on web presence. Getting a business on web presence is very simple - create an awesome customer face
+                    web application and deploy it on server. Let's assume, initially you deployed your website on below
+                    architecture.
+                </p>
+                <p>
+                    <img src="common_system.png" width="50%">
+                </p>
+                <p>
+                    An HTTP server is a web server which will take the HTTP request and pass it to App server. App
+                    Server is an application server which contains your application.
+                </p>
+                <p>
+                    Let's start the discussion with some example. Assume the app server can take maximum 500 TPS
+                    (Transactions Per Second). That means your application can process 500 requests in a second.
+                </p>
+                <p>
+                    <b>Note</b> - TPS depends on various parameters like server physical configuration (Memory,
+                    Processor, Network and etc.) and application architecture.
+                </p>
+                <p>
+                    Lets assume, your business is growing in internet and number of users are increasing. That
+                    means the load on your server is increasing. At some point of time 500 TPS is not sufficient to
+                    serve all user requests. you need to look back on server configuration and need to scale your server
+                    configuration (vertical scaling). Even if you increase the server configuration, if the load on the
+                    server is keep on increasing again at some point of time your single server is not sufficient to
+                    serve all the request. In this case we need to add another server.
+                </p>
+                <p>
+                    Irrespective of assumption there are various reasons to have more than one server with application
+                    deployed in each. Below are the main reasons.
+                <ol>
+                    <li>As we discussed above, we need to add more servers to handle more requests</li>
+                    <li>Due to hardware or network failure the single server is not reachable. In this case you need a
+                        backup server (also called failover server).
+                    </li>
+                    <li>Due to natural disaster the infrastructure is collapsed and your server is no more exist.
+                    </li>
+                </ol>
+                </p>
+                <p>
+                    Overall, we should have more than one server to do business online. As we discussed, the HTTP server
+                    is the one who interacts with application server based on the request. Now we need to answer on
+                    below questions.
+
+                <ol>
+                    <li>
+                        How the HTTP server knows how many app servers are there with application deployed or how to
+                        configure multiple application servers in HTTP server?
+                    </li>
+                    <li>
+                        On what base HTTP server will route the request to application servers?
+                    </li>
+                    <li>
+                        How to configure failover servers?
+                    </li>
+                </ol>
+                </p>
+                <p>
+                    Well, we will get the answers to all above questions by the end of this article.
+                </p>
+                <h3 id="loadinBalancer">What is Load balancing?</h3>
+                <p>
+                    Load balancing is a technique used to distribute the application requests across the servers. Load
+                    balancer uses different kind of algorithms to route the request.
+                </p>
+                <p>
+                    Till now we are taking about load balancing on web application. Load balancing is not limited to web
+                    application. We can use this concept in multiple places. For example,
+                <ul>
+                    <li>DNS load balancing</li>
+                    <li>HTTP load balancing</li>
+                    <li>SSL load balancing</li>
+                    <li>Network load balancing</li>
+                    <li>Database load balancing</li>
+                    <li>Cloud load balancing</li>
+                </ul>
+                </p>
+                <p>
+                    This article is aimed to discuss on web application load balancing. See below diagram to understand
+                    the load balancing.
+                </p>
+                <p>
+                    <img src="load-balancer-pg.png">
+                </p>
+                <p>
+                    In above diagram I replaced the web server name with load balancer. Cluster mean a group of servers.
+                    <b>App Server1</b> and <b>App Server2</b> are the application servers which they are in one group or
+                    cluster to serve for the same purpose.
+                </p>
+                <h3 id="lbRole">load balancer role</h3>
+                <p>
+                <ul>
+                    <li><b>Route the request</b> - Load balancer works as a reverse proxy to distribute the application
+                        traffic across the servers based on the chosen algorithm
+                    </li>
+                    <li><b> Health check</b> - Gets the health statistics of each server. This check is done based on
+                        the time frame. If the server is down due various reasons, the load balancer will not send the
+                        request to that server. Once the server is up again requests will be routed.
+                    </li>
+                    <li><b>Session stickiness </b>- Maintains the session stickiness. The load balancer will keep track
+                        of the previous requests. For example, if user U1 is severed through server A, all the U1 user
+                        requests will be served from server A. Session stickiness is optional. You can enable or disable
+                        this based on need. The load balancer will maintains the session stickiness using the client IP
+                        address, cookies or URL. Session stickiness may disturb the load balancing algorithm.
+                    </li>
+                    <li><b>Failover servers </b>- We can maintain the list reserved servers or backup servers. The load
+                        balancer will maintains the list of backup servers and route the requests to backup servers if
+                        none of the primary servers are available to serve the request.
+                    </li>
+                </ul>
+                </p>
+                <h3 id="lbTypes">Types of Load balancers</h3>
+                <p>Load balancer can be a physical device or a software. Based on need you need to choose the one. You
+                    can google to know about load balancer devices. <a href="https://f5.com/" target="_blank">F5</a>
+                    BIG-IP load balancer is widely used. <a href="https://f5.com/" target="_blank">F5</a> supports
+                    load balance over multiple data centers.</p>
+                <p>
+                    Software based load balancers will work along with HTTP servers. Based on popularity below are the
+                    list of HTTP servers.
+                </p>
+                <p>
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="bg-primary text-white">
+                        <td>HTTP Server</td>
+                        <td>Provider Name</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Apache</td>
+                        <td>Apache</td>
+                    </tr>
+                    <tr>
+                        <td>IIS</td>
+                        <td>Microsoft</td>
+                    </tr>
+                    <tr>
+                        <td>Nginx</td>
+                        <td>NGINX, Inc.</td>
+                    </tr>
+                    <tr>
+                        <td>GWS</td>
+                        <td>Google</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a href="http://news.netcraft.com/" target="_blank">Netcraft</a> will conduct the surveys every month to
+                understand the popularity of the web server. Visit
+                their <a href="http://news.netcraft.com/" target="_blank">site</a> to know the trend.
+                </p>
+                <p>
+                    So, we have device based as well as software based load balancers. Now the confusion is which one to
+                    choose. It's completely based on the business requirement. There is an article published by <a
+                        href="http://nginx.com/blog/five-reasons-use-software-load-balancer/" target="_blank">Nginx</a>
+                    which explains why to choose software based load balancer.
+                </p>
+                <h3 id="lbChoice">Choose the right web server</h3>
+                <p>
+                    Once you decide to go with load balancer making right choice to choose the one which are available
+                    in the market is the most challenging question. Here I am trying to give some guidance to understand
+                    the parameter that need to be considered to make your choice.
+                <ul>
+                    <li>
+                        OS compatibility, Security and feature supported
+                        <div class="overflow-scroll">
+                            <table class="table table-striped">
+                                <caption>Source:<a href="http://en.wikipedia.org/wiki/Comparison_of_web_server_software"
+                                                   target="_blank">Wiki</a>
+                                </caption>
+                                <thead class="bg-primary text-white">
+                                <tr>
+                                    <td>Server</td>
+                                    <td colspan="3">Security</td>
+                                    <td colspan="5">Features</td>
+                                    <td colspan="8">OS</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Basic</td>
+                                    <td>digest</td>
+                                    <td>secure</td>
+                                    <td>Virtual Hosting</td>
+                                    <td>CGI</td>
+                                    <td>Admin console</td>
+                                    <td>IPV6</td>
+                                    <td>HTTP/2</td>
+                                    <td>Windows</td>
+                                    <td>Linux</td>
+                                    <td>OS X</td>
+                                    <td>Solaris</td>
+                                    <td>OpenVMS</td>
+                                    <td>Z/OS</td>
+                                    <td>HP UX</td>
+                                    <td>IBM i</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Apache</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>IIS</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>N</td>
+                                    <td>N</td>
+                                    <td>N</td>
+                                    <td>N</td>
+                                    <td>N</td>
+                                    <td>N</td>
+                                    <td>N</td>
+                                </tr>
+                                <tr>
+                                    <td>Nginx</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>N</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>N</td>
+                                    <td>N</td>
+                                    <td>Y</td>
+                                    <td>N</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                    <li>
+                        <b> Measure Web server performance</b> - There are open source tool in market to measure the web
+                        server
+                        performance. For example, Httperf and Apache Bench (ab) and Jmeter tools can be used to measure
+                        the bench mark. Before measure, disable all the plug-ins. As per survey Nginx server is a bit
+                        faster than Apache.
+                    </li>
+                    <li>
+                        <b>Algorithm or method supported</b> - Like OS uses process scheduling algorithms, load
+                        balancing also
+                        uses some algorithms or methods to balance the load in a group/cluster. Based on need we can
+                        specify the algorithm that need be used by load balancer. There are lot of algorithms to balance
+                        the load. Most commonly used algorithms are,
+                        <table class="table table-striped">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <td>Methods/Algorithm</td>
+                                <td>Description</td>
+                                <td>When to Choose</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Round robin</td>
+                                <td>This is the default method used in most of loan balancers. Round robin method
+                                    distributes
+                                    the load across
+                                    all servers equally
+                                </td>
+                                <td>Suitable if the servers are with the same capabilities in the cluster</td>
+                            </tr>
+                            <tr>
+                                <td>Weighted round robin</td>
+                                <td>This method works like as a round robin, but considered the server weight given to
+                                    it. For
+                                    example, server A
+                                    weight is defined as 100 and Server B weight with 50. That means out of 3 requests,
+                                    2
+                                    requests are served by
+                                    server A and 1 request by server B
+                                </td>
+                                <td>Suitable if the servers are with different capabilities in cluster</td>
+                            </tr>
+                            <tr>
+                                <td>Least connections</td>
+                                <td>Least connections method is very simple. The load balancer will route the request to
+                                    the
+                                    server which has
+                                    least active connections
+                                </td>
+                                <td>Suitable if servers are with same or different capabilities. It's based on server
+                                    performance
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </li>
+
+                </ul>
+                Apart from the above methods, we can create a rule in load balancer based on HTTP headers, cookies and
+                request data.
+                </p>
+                <h3 id="lbMethods">Web servers and load balancing methods</h3>
+                <p>
+                <table class="table table-striped">
+                    <thead class="bg-primary text-white">
+                    <thead class="bg-primary text-white">
+
+                    <tr>
+                        <td>Web server</td>
+                        <td>Algorithms Supported</td>
+                    </tr>
+                    <thead>
+                    <tbody>
+                    <tr>
+                        <td>Apache</td>
+                        <td>Round robin<br>Weighted round robin<br>Least connections
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>IIS</td>
+                        <td>Weighted round robin<br>Weighted total traffic<br>Least current request<br>Least response
+                            time<br>Server
+                            variable hash<br>Query string hash<br>Request hash
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nginx</td>
+                        <td>Round robin<br>Weighted round robin<br>Least connections<br>IP-Hash
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </p>
+                <h3 id="ref">References</h3>
+                <p class="reference">
+                    <a href="http://en.wikipedia.org/wiki/Comparison_of_web_server_software" target="_blank">http://en.wikipedia.org/wiki/Comparison_of_web_server_software</a>
+                    <a href="http://nginx.org/en/docs/http/ngx_http_upstream_module.html" target="_blank">http://nginx.org/en/docs/http/ngx_http_upstream_module.html</a>
+                    <a href="http://nginx.com/resources/admin-guide/load-balancer" target="_blank">http://nginx.com/resources/admin-guide/load-balancer</a>
+                    <a href="http://en.wikipedia.org/wiki/Comparison_of_web_server_software" target="_blank">http://en.wikipedia.org/wiki/Comparison_of_web_server_software</a>
+                    <a href="http://news.netcraft.com" target="_blank">http://news.netcraft.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
