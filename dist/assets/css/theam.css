@@ -157,6 +157,9 @@ h3 {
     margin-right: 4%;
 }
 
+#article-body{
+    color: #535a53;
+}
 #article-body img {
     margin: auto;
     max-width: 100%;
@@ -310,5 +313,9 @@ caption {
 
 .reference a {
     display: block;
+}
+
+.badge-primary{
+    font-weight: normal;
 }
 
