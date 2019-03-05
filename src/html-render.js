@@ -46,11 +46,11 @@ export class HTMLRender {
             tagsLink += `<a href="/blog.html?tag=${tag}"> <span class="badge badge-primary">#${tag} </span></a> `;
             return tagsLink;
         }, '');
-
+        const fileType = article.imgType || 'png';
         return `<div class="col-4 article">
                      <div class="card">
                         <a href="${pageLinkResource}.html">
-                            <img class="card-img-top card-img" src="${pageLinkResource}-sm.png" alt="Card image">
+                            <img class="card-img-top card-img" src="${pageLinkResource}-sm.${fileType}" alt="Card image">
                             <div class="img-overlay">
                                
                             </div>
