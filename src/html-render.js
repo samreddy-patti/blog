@@ -16,7 +16,7 @@ export class HTMLRender {
     addArticleIndexSection() {
         const articleMain = $('#articleMain');
         if (articleMain.length) {
-            // this.addSocialButtons();
+            this.addSocialButtons();
             this.addArticleIndex();
         }
     }
@@ -72,11 +72,13 @@ export class HTMLRender {
     }
 
     addArticleIndex() {
-        let titles = '';
+        let titles = '<ol>';
         $('#articleMain h3').each(function (index) {
             const node = $(this);
-            titles += `<div class="pb-2"><a href="#${node.attr('id')}" class="link"><span class="text-white">${node.text()}</span></a></div>`;
+            titles += `<li class="pb-2"><a href="#${node.attr('id')}" class="link"><span class="text-white">${node.text()}</span></a></li>`;
         });
+        titles += '</ol>';
+
         $('#article-body').prepend(`
             <div class="border border-muted pt-3 col-md-2 bg-dark">
                 <div class="index-sticky-top">${titles} </div>
@@ -87,7 +89,7 @@ export class HTMLRender {
     addSocialButtons() {
         const href = `${location.origin}${location.pathname}`;
         $('body').prepend('<div id="fb-root"></div>');
-        $('body').append('<div class="fb-like" data-href="href" data-layout="box_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>');
+        //$('body').append('<div class="fb-like" data-href="href" data-layout="box_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>');
         $('#article-body').append(`
             <div class="container col col-12 p-0">
                 <div class="fb-comments" data-width="100%" data-href="${href}" data-numposts="10"></div>

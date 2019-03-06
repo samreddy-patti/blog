@@ -25,10 +25,16 @@ $(document).ready(() => {
 
         setTimeout(() => {
             $('#tags').jQCloud(wordCloud, {
-                autoResize: true,
-                colors: ["#e1bee7", "#9575cd", "#ffd54f", "#ffca28", "#ffc107", "#ffb300", "#ffa000", "#ff8f00", "#f57f17"]
+                autoResize: true
             });
         }, 1000);
+
+        /*setTimeout(() => {
+            $('#tags').jQCloud(wordCloud, {
+                autoResize: true,
+                colors: ["#33e746", "#2bcd79", "#ffd54f", "#ffca28", "#ffc107", "#ffb300", "#ffa000", "#ff8f00", "#f57f17"]
+            });
+        }, 1000);*/
 
     }
 });
@@ -42,14 +48,17 @@ $(window).scroll(function () {
             color: "#1565C0",
         });*/
         $(".menu").css({
-            background: "#49599a"
+            background: "#232f34",
+            width: "100%"
         });
     } else {
        /* $(".menu-link").css({
             color: "#ffffff",
         });*/
         $(".menu").css({
-            background: "transparent"
+            background: "transparent",
+            width: "0"
         });
     }
 });
+
