@@ -48,7 +48,7 @@ $(window).scroll(function () {
             color: "#1565C0",
         });*/
         $(".menu").css({
-            background: "#232f34",
+            background: "#20546b",
             width: "100%"
         });
     } else {
